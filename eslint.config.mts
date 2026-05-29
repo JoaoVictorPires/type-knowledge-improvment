@@ -18,6 +18,7 @@ export default defineConfig([
       indent: ["warn", 2],
       semi: ["warn", "always"],
       "@typescript-eslint/no-empty-interface": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
     },
   }
 ]);
