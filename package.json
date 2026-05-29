@@ -1,0 +1,30 @@
+{
+  "name": "knowledge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JoaoVictorPires",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "http-status-codes": "^2.3.0"
+  },
+  "devDependencies": {
+    "@eslint/css": "^1.2.0",
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^1.2.0",
+    "@eslint/markdown": "^8.0.2",
+    "@types/express": "^5.0.6",
+    "@types/http-status-codes": "^1.2.0",
+    "eslint": "^10.4.0",
+    "globals": "^17.6.0",
+    "jiti": "^2.7.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.60.0"
+  }
+}
