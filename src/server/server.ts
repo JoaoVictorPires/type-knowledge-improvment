@@ -1,4 +1,6 @@
 import express from 'express';
+import './shared/services/TraducoesYup';
+
 
 import 'dotenv/config';
 
