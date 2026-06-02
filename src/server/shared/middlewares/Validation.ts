@@ -6,6 +6,7 @@ type TProperty = 'body' | 'query' | 'params' | 'headers';
 
 type TGetSchema = <T>(Schema: Schema<T>) => Schema<T>;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TAllSchemas = Record<TProperty, Schema<any>>;
 
 type TGetAllSchemas = (getSchema: TGetSchema) => Partial<TAllSchemas>;
