@@ -1,6 +1,8 @@
-import { Request, Response } from "express";
+import { Request, RequestHandler, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as y from 'yup';
+
+import { validation } from "../../shared/middlewares";
 
 
 interface Icidade {
@@ -8,43 +10,22 @@ interface Icidade {
   estado: string;
 }
 
+interface Ifilter {
+  filter?: string;
+}
 
 
-const bodyValidation: y.ObjectSchema<Icidade> = y.object().shape({
-  nome: y.string().required().min(3),
-  estado: y.string().required().min(2).max(2),
-});
-
-
+export const createValidation = validation((getSchema) => ({
+  body: getSchema<Icidade>(y.object().shape({
+    nome: y.string().required().min(3),
+    estado: y.string().required().min(2).max(2),
+  })),
+  query: getSchema<Ifilter>(y.object().shape({
+    filter: y.string().required().min(3),
+  })),
+}));
 export const create = async (req: Request<{}, {}, Icidade>, res: Response) => {
-  let validatedData: Icidade | undefined = undefined;
-  try {
-    validatedData = await bodyValidation.validate(req.body, { abortEarly: false });
-  } catch (err) {
-    const yError = err as y.ValidationError;
-    const errors: Record<string, string> = {};
 
-    yError.inner.forEach((error) => {
-      if (!error.path) return;
-
-      errors[error.path] = error.message;
-    })
-
-    return res.status(StatusCodes.BAD_REQUEST).json({
-      errors: {
-        default: errors,
-      }
-    });
-  }
-
-
-  console.log(validatedData);
-
-
-
-
-
-
-
+  console.log(req.body);
   return res.status(StatusCodes.CREATED).send('Create');
 };
