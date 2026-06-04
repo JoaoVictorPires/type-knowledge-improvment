@@ -15,6 +15,8 @@ export const deleteByIdValidation = validation((getSchema) => ({
     id: y.number().integer().required().moreThan(0),
   })),
 }));
+
+
 export const deleteById = async (req: Request<IParamsProps, {}, {} >, res: Response) => {
   console.log(req.params);
 
